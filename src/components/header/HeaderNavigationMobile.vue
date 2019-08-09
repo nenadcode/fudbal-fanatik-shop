@@ -59,7 +59,10 @@
           </div>
         </li>
 
-        <router-link tag="li" to="/">O nama</router-link>
+        <router-link
+          tag="li"
+          to="/info/o-nama"
+          @click.native="multipleMenuChanges">O nama</router-link>
 
         <li>
           <div class="menu-item-headline" :class="{ 'headline-active': helpMenuItemActive }">
@@ -91,11 +94,20 @@
                   <h3>Plaćanje i Isporuka</h3>
                 </div>
                 <ul>
-                  <router-link tag="li" to="/" class="submenu-item"
+                  <router-link
+                    tag="li"
+                    to="/info/kako-kupiti"
+                    class="submenu-item"
                     @click.native="multipleMenuChanges">Kako kupiti?</router-link>
-                  <router-link tag="li" to="/" class="submenu-item"
+                  <router-link
+                    tag="li"
+                    to="/info/placanje"
+                    class="submenu-item"
                     @click.native="multipleMenuChanges">Načini plaćanja</router-link>
-                  <router-link tag="li" to="/" class="submenu-item"
+                  <router-link
+                    tag="li"
+                    to="/info/isporuka-i-povracaj"
+                    class="submenu-item"
                     @click.native="multipleMenuChanges">Isporuka i povraćaj</router-link>
                 </ul>
               </li>
@@ -107,9 +119,15 @@
                   <h3>Podrška</h3>
                 </div>
                 <ul>
-                  <router-link tag="li" to="/" class="submenu-item"
+                  <router-link
+                    tag="li"
+                    to="/info/kontakt"
+                    class="submenu-item"
                     @click.native="multipleMenuChanges">Kontaktirajte nas</router-link>
-                  <router-link tag="li" to="/" class="submenu-item"
+                  <router-link
+                    tag="li"
+                    to="/info/najcesca-pitanja"
+                    class="submenu-item"
                     @click.native="multipleMenuChanges">Najčeśće postavljena pitanja</router-link>
                 </ul>
               </li>
@@ -137,6 +155,7 @@ export default {
   methods: {
     changeMenu() {
       this.$store.commit('TOGGLE_MENU_ACTIVE')
+      document.body.style.backgroundColor = "white";
     },
     changeClubsMenuItemActive() {
       return this.clubsMenuItemActive = !this.clubsMenuItemActive

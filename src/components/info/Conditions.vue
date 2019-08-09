@@ -47,7 +47,15 @@
         <ol>
           <li>
             <h3>Kako Kupiti?</h3>
-            <p>Za detaljan opis kako naručiti proizvode u našoj Internet prodavnici Fudbal Fanatik Suveniri, molimo Vas da pogledate stranu <span class="bold-text">Kako kupiti</span>.</p>
+            <p>Za detaljan opis kako naručiti proizvode u našoj Internet prodavnici Fudbal Fanatik Suveniri, molimo Vas da pogledate stranu <router-link  to="/info/kako-kupiti">Kako kupiti</router-link>.</p>
+          </li>
+          <li>
+            <h3>Plaćanje</h3>
+            <p>Za detaljan opis kako naručiti proizvode u našoj Internet prodavnici Fudbal Fanatik Suveniri, molimo Vas da pogledate stranu <router-link  to="/info/placanje">Načini plaćanja</router-link>.</p>
+          </li>
+          <li>
+            <h3>Isporuka i povraćaj</h3>
+            <p>Sva bitna objašnjenja i uputstva koja su vezana za isporuku poručenih i plaćenih proizvoda možete pogledati na strani <router-link  to="/info/isporuka-i-povracaj">Isporuka i povraćaj</router-link>.</p>
           </li>
         </ol>
       </section>
@@ -62,66 +70,5 @@ export default {
 </script>
 
 <style lang="scss">
-  .info-page-top {
-    padding: 0 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-
-    h1 {
-      display: flex;
-      justify-content: center;
-      width: 100%;
-      font-family: 'Source Sans Pro', 'HelveticaNeue', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-      padding: 20px 0 8px 0;
-      border-bottom: 1px solid #ededed;
-      text-transform: uppercase;
-      font-size: 2em;
-      font-weight: 400;
-      line-height: 1.4;
-      color: #000;
-    }
-
-    .ff-logo-image-wrapper {
-      display: flex;
-      justify-content: center;
-      height: 80px;
-      padding: 30px 0 0;
-
-      .ff-logo-image {
-        width: 50%
-      }
-    }
-  }
-
-  .info-page-content {
-    padding: 0 20px;
-
-    h2, h3 {
-      font-family: 'Source Sans Pro', 'HelveticaNeue', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-      font-weight: 400;
-      margin: 0 0 0.5em;
-      line-height: 1.4;
-      color: #000;
-      text-transform: uppercase;
-    }
-
-    h3 {
-
-    }
-
-    p {
-      font-family: "Roboto","HelveticaNeue","Helvetica Neue",Helvetica,Arial,sans-serif;
-      font-weight: 400;
-      line-height: 1.6;
-      font-size: 16px;
-      color: #4f4f4f;
-      -webkit-font-smoothing: antialiased;
-    }
-
-    .bold-text {
-      font-weight: bold;
-    }
-  }
 
 </style>

@@ -1,8 +1,14 @@
 <template>
   <header class="util">
-    <div class="header-bar" @click="changeMenu">
-      <font-awesome-icon class="menu-bars" icon="bars" />
-      <span>Meni</span>
+    <div class="header-bar">
+      <div class="menu" @click="changeMenu">
+        <font-awesome-icon class="menu-bars" icon="bars" />
+        <span>Meni</span>
+      </div>
+      <div class="cart">
+        <font-awesome-icon class="" icon="shopping-cart" />
+        0 Cart
+      </div>
     </div>
     <header-navigation-mobile />
   </header>
@@ -22,6 +28,7 @@ export default {
   methods: {
     changeMenu() {
       this.$store.commit('TOGGLE_MENU_ACTIVE')
+      document.body.style.backgroundColor = "rgba(0,0,0,0.4)";
     }
   },
   components: {
@@ -38,6 +45,8 @@ export default {
     font-size: 0.75em;
 
     .header-bar {
+      display: flex;
+      justify-content: space-between;
       padding: 15px 20px;
 
       .menu-bars {
