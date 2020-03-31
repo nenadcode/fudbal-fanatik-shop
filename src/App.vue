@@ -22,9 +22,11 @@ export default {
 <style lang="scss">
   @import url('https://fonts.googleapis.com/css?family=Montserrat');
   @import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro');
+  @import url('https://fonts.googleapis.com/css?family=Raleway:400,600,700&display=swap');
   body {
-    margin: 0;
     display: grid;
+    background-color: #fff !important;
+    margin: 0;
   }
 
   ul {
@@ -35,7 +37,7 @@ export default {
   #app {
     margin: 0;
     display: grid;
-    font-family: 'Roboto', 'HelveticaNeue', 'Helvetica Neue', Helvetica , Arial, sans-serif;
+    font-family: 'Raleway', sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     font-size: 16px;
