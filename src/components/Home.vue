@@ -5,8 +5,14 @@
 </template>
 
 <script>
+import { http } from '../services/http'
+
 export default {
   name: 'Home',
+
+  created() {
+    http.get('http://localhost:3000/products');
+  }
 }
 </script>
 
