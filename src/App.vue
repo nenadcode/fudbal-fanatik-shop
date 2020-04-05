@@ -29,15 +29,9 @@ export default {
 @import url('https://fonts.googleapis.com/css?family=Montserrat');
 @import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro');
 @import url('https://fonts.googleapis.com/css?family=Raleway:400,600,700&display=swap');
-body {
-  display: grid;
-  background-color: #fff !important;
-  margin: 0;
-}
-ul {
-  list-style: none;
-  padding: 0;
-}
+@import "@/assets/scss/style.scss";
+@import "@/assets/scss/navigation.scss";
+
 #app {
   margin: 0;
   display: grid;

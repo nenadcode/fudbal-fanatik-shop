@@ -27,3 +27,8 @@ yarn run lint
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
+
+### features/mobile-navigation to do:
+- Shopping cart
+- Close sub-menu item when another is opened
+- Make icons for `pomoc` and `kontakt` smaller
