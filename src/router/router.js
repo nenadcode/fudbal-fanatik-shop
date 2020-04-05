@@ -1,6 +1,10 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Home from '@/components/Home'
+
+import ClubsTemplate from '@/components/clubs/ClubsTemplate'
+import ProductsTemplate from '@/components/products/ProductsTemplate'
+
 import AboutUs from '@/components/info/AboutUs'
 import Conditions from '@/components/info/Conditions'
 import HowToBuy from '@/components/info/HowToBuy'
@@ -17,6 +21,14 @@ export default new Router({
       path: '/',
       name: 'Home',
       component: Home
+    },
+    {
+      path: '/klubovi/:name',
+      component: ClubsTemplate
+    },
+    {
+      path: '/proizvodi/:name',
+      component: ProductsTemplate
     },
     {
       path: '/info/o-nama',

@@ -19,7 +19,7 @@ export default {
 <style lang="scss">
   .router-link-exact-active,
   .router-link-exact-active.submenu-item {
-    color: #1391a4;
+    font-weight: 600;
   }
   .info-page-top {
     padding: 0 20px;
