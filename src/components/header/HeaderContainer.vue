@@ -9,6 +9,9 @@
       <span class="menu-icon-bar"></span>
       <span class="menu-icon-bar"></span>
     </div>
+    <router-link to="/" id="logo-f">
+      <img src="../../assets/fudbal-fanatik-small.png" alt="">
+    </router-link>
     <div class="hdr-right">
       <font-awesome-icon class="" icon="shopping-cart" />
       0
@@ -69,6 +72,15 @@ export default {
   -ms-transition: all 80ms ease;
   -o-transition: all 80ms ease;
   transition: all 80ms ease;
+}
+#logo-f {
+  position: absolute;
+  height: 37px;
+  top: 20%;
+  left: 38%;
+  margin: 0 auto;
+  text-align: center;
+  vertical-align: middle;
 }
 
 .menu-icon-bar {
@@ -137,17 +149,5 @@ export default {
   -ms-transform: translateX(200px);
   -o-transform: translateX(200px);
   transform: translateX(200px);
-}
-
-@media screen and (max-width: 1024px) {
-  .menu-open .nav-wrapper {
-    left: 0;
-    opacity: 1;
-    -webkit-transform: translate(0,0);
-    -moz-transform: translate(0,0);
-    -ms-transform: translate(0,0);
-    -o-transform: translate(0,0);
-    transform: translate(0,0);
-  }
 }
 </style>

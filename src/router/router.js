@@ -2,25 +2,8 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Home from '@/components/Home'
 
-import ClubsLiverpool from '@/components/clubs/ClubsLiverpool'
-import ClubsChelsea from '@/components/clubs/ClubsChelsea'
-import ClubsManUtd from '@/components/clubs/ClubsManUtd'
-import ClubsArsenal from '@/components/clubs/ClubsArsenal'
-import ClubsRealMadrid from '@/components/clubs/ClubsRealMadrid'
-import ClubsBarcelona from '@/components/clubs/ClubsBarcelona'
-import ClubsJuventus from '@/components/clubs/ClubsJuventus'
-import ClubsMilan from '@/components/clubs/ClubsMilan'
-
-/* import ProductsBracelets from '@/components/products/ProductsBracelets'
-import ProductsBracelets from '@/components/products/ProductsBracelets'
-import ProductsBracelets from '@/components/products/ProductsBracelets'
-import ProductsBracelets from '@/components/products/ProductsBracelets'
-import ProductsBracelets from '@/components/products/ProductsBracelets'
-import ProductsBracelets from '@/components/products/ProductsBracelets'
-import ProductsBracelets from '@/components/products/ProductsBracelets'
-import ProductsBracelets from '@/components/products/ProductsBracelets'
-import ProductsBracelets from '@/components/products/ProductsBracelets'
-import ProductsBracelets from '@/components/products/ProductsBracelets' */
+import ClubsTemplate from '@/components/clubs/ClubsTemplate'
+import ProductsTemplate from '@/components/products/ProductsTemplate'
 
 import AboutUs from '@/components/info/AboutUs'
 import Conditions from '@/components/info/Conditions'
@@ -40,44 +23,12 @@ export default new Router({
       component: Home
     },
     {
-      path: '/klubovi/liverpool',
-      name: 'clubs-liverpool',
-      component: ClubsLiverpool
+      path: '/klubovi/:name',
+      component: ClubsTemplate
     },
     {
-      path: '/klubovi/chelsea',
-      name: 'clubs-chelsea',
-      component: ClubsChelsea
-    },
-    {
-      path: '/klubovi/man-utd',
-      name: 'clubs-man-utd',
-      component: ClubsManUtd
-    },
-    {
-      path: '/klubovi/arsenal',
-      name: 'clubs-arsenal',
-      component: ClubsArsenal
-    },
-    {
-      path: '/klubovi/real-madrid',
-      name: 'clubs-real-madrid',
-      component: ClubsRealMadrid
-    },
-    {
-      path: '/klubovi/barcelona',
-      name: 'clubs-barcelona',
-      component: ClubsBarcelona
-    },
-    {
-      path: '/klubovi/juventus',
-      name: 'clubs-juventus',
-      component: ClubsJuventus
-    },
-    {
-      path: '/klubovi/milan',
-      name: 'clubs-milan',
-      component: ClubsMilan
+      path: '/proizvodi/:name',
+      component: ProductsTemplate
     },
     {
       path: '/info/o-nama',

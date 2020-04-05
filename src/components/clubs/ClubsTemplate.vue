@@ -1,12 +1,12 @@
 <template>
   <div>
-    Klubovi RealMadrid
+    Clubs Template
   </div>
 </template>
 
 <script>
 export default {
-  name: 'ClubsRealMadrid'
+  name: 'ClubsTemplate'
 }
 </script>
 

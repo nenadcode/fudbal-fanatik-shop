@@ -1,246 +1,191 @@
 <template>
   <div class="header-wrapper nav-wrapper">
     <nav id="header-nav" class="critical-hidden">
-      <div :class="{ 'navigation-mobile-active': menuActive }" class="navigation-mobile-drawer">
-        <ul class="main-nav nav-left">
-          <router-link tag="li" to="/" @click.native="multipleMenuChanges">
-            <div class="menu-item-headline">
-              početna
-            </div>
-          </router-link>
+      <ul class="main-nav nav-left">
+        <router-link
+          tag="li"
+          to="/"
+          class="menu-item-headline"
+          @click.native="multipleMenuChanges">
+          početna
+        </router-link>
 
-          <li class="dropdown">
-            <div
-              class="menu-item-headline"
-              :class="{ 'headline-active': clubsMenuItemActive }"
-              @click="changeClubsMenuItemActive">
-              klubovi
-              <span>
-                <font-awesome-icon v-if="!clubsMenuItemActive" icon="arrow-right" />
-                <font-awesome-icon v-if="clubsMenuItemActive" icon="arrow-down" />
-              </span>
-            </div>
-            <div v-if="clubsMenuItemActive">
-              <ul class="hovered">
-                <router-link
-                  tag="li"
-                  to="`/klubovi/${liverpool}`"
-                  class="secondary-link"
-                  @click.native="multipleMenuChanges">
-                  <div class="hovered-wrapper">
-                    <div class="icon-wrapper">
-                      <img src="../../assets/liverpool-logo.png" alt="Liverpool logo">
-                    </div>
-                    liverpool
+        <li
+          class="menu-item-headline"
+          :class="{
+            'headline-active': clubsMenuItemActive,
+            'is-active': clubsMenuItemActive
+          }"
+          @click="changeClubsMenuItemActive">
+            klubovi
+            <span>
+              <img src="../../assets/right.png" alt="arrow right" />
+            </span>
+            <ul :class="{ 'hovered': clubsMenuItemActive }">
+              <router-link
+                v-for="club in this.clubsRoutes"
+                :key="club._id"
+                tag="li"
+                :to="`/klubovi/${club.clubShortName}`"
+                class="secondary-link"
+                @click.native="multipleMenuChanges">
+                <div class="hovered-wrapper">
+                  <div class="icon-wrapper">
+                    <img :src="getClubImgUrl(club.clubShortName)" alt="club.clubName">
                   </div>
-                </router-link>
-                <router-link
-                  tag="li"
-                  to="/klubovi/chelsea"
-                  class="secondary-link"
-                  @click.native="multipleMenuChanges">
-                  <div class="hovered-wrapper">
-                    <div class="icon-wrapper">
-                      <img src="../../assets/chelsea-logo.png" alt="Chelsea logo">
-                    </div>
-                    chelsea
-                  </div>
-                </router-link>
-                <router-link
-                  tag="li"
-                  to="/klubovi/man-utd"
-                  class="secondary-link"
-                  @click.native="multipleMenuChanges">
-                  <div class="hovered-wrapper">
-                    <div class="icon-wrapper">
-                      <img src="../../assets/man-utd-logo.png" alt="Manchester United logo">
-                    </div>
-                    man utd
-                  </div>
-                </router-link>
-                <router-link
-                  tag="li"
-                  to="/klubovi/arsenal"
-                  class="secondary-link"
-                  @click.native="multipleMenuChanges">
-                  <div class="hovered-wrapper">
-                    <div class="icon-wrapper">
-                      <img src="../../assets/arsenal-logo.png" alt="Arsenal logo">
-                    </div>
-                    arsenal
-                  </div>
-                </router-link>
-                <router-link
-                  tag="li"
-                  to="/klubovi/real-madrid"
-                  class="secondary-link"
-                  @click.native="multipleMenuChanges">
-                  <div class="hovered-wrapper">
-                    <div class="icon-wrapper">
-                      <img src="../../assets/real-madrid-logo.png" alt="Real Madrid logo">
-                    </div>
-                    Real Madrid
-                  </div>
-                </router-link>
-                <router-link
-                  tag="li"
-                  to="/klubovi/barcelona"
-                  class="secondary-link"
-                  @click.native="multipleMenuChanges">
-                  <div class="hovered-wrapper">
-                    <div class="icon-wrapper">
-                      <img src="../../assets/barcelona-logo.png" alt="Barcelona logo">
-                    </div>
-                    Barcelona
-                  </div>
-                </router-link>
-                <router-link
-                  tag="li"
-                  to="/klubovi/juventus"
-                  class="secondary-link"
-                  @click.native="multipleMenuChanges">
-                  <div class="hovered-wrapper">
-                    <div class="icon-wrapper">
-                      <img src="../../assets/juventus-logo.png" alt="Juventus logo">
-                    </div>
-                    Juventus
-                  </div>
-                </router-link>
-                <router-link
-                  tag="li"
-                  to="/klubovi/milan"
-                  class="secondary-link"
-                  @click.native="multipleMenuChanges">
-                  <div class="hovered-wrapper">
-                    <div class="icon-wrapper">
-                      <img src="../../assets/milan-logo.png" alt="Milan logo">
-                    </div>
-                    Milan
-                  </div>
-                </router-link>
-              </ul>
-            </div>
-          </li>
+                  {{ club.clubName }}
+                </div>
+              </router-link>
+            </ul>
+        </li>
 
-          <li class="dropdown">
-            <div
-              class="menu-item-headline"
-              :class="{ 'headline-active': productsMenuItemActive }" @click="changeProductsMenuItemActive">
-              proizvodi
-              <span>
-                <font-awesome-icon v-if="!productsMenuItemActive" icon="arrow-right" />
-                <font-awesome-icon v-if="productsMenuItemActive" icon="arrow-down" />
-              </span>
-            </div>
-            <div v-if="productsMenuItemActive">
-              <ul class="hovered">
-                <router-link
-                  tag="li"
-                  to="/proizvodi/narukvice"
-                  class="secondary-link"
-                  @click.native="multipleMenuChanges">
-                  <div class="hovered-wrapper">
-                    <div class="icon-wrapper">
-                      <img src="../../assets/liverpool-logo.png" alt="Liverpool logo">
-                    </div>
-                    Narukvice
+        <li
+          class="menu-item-headline"
+          :class="{
+            'headline-active': productsMenuItemActive,
+            'is-active': productsMenuItemActive
+          }"
+          @click="changeProductsMenuItemActive">
+          proizvodi
+          <span>
+            <img src="../../assets/right.png" alt="arrow right" />
+          </span>
+          <ul :class="{ 'hovered': productsMenuItemActive }">
+            <router-link
+              v-for="product in this.productsRoutes"
+              :key="product._id"
+              tag="li"
+              :to="`/proizvodi/${product.productShortName}`"
+              class="secondary-link"
+              @click.native="multipleMenuChanges">
+              <div class="hovered-wrapper">
+                <div class="icon-wrapper">
+                  <img :src="getProductImgUrl(product.productShortName)" alt="Liverpool logo">
+                </div>
+                {{ product.productName }}
+              </div>
+            </router-link>
+          </ul>
+        </li>
+      </ul>
+      <ul class="main-nav nav-right">
+        <router-link
+          tag="li"
+          to="/info/o-nama"
+          class="menu-item-headline"
+          @click.native="multipleMenuChanges">
+          o nama
+        </router-link>
+
+        <li
+          class="menu-item-headline"
+          :class="{
+            'headline-active': helpMenuItemActive,
+            'is-active': helpMenuItemActive
+          }"
+          @click="changeHelpMenuItemActive">
+            pomoć
+          <span>
+            <img src="../../assets/right.png" alt="arrow right" />
+          </span>
+          <ul :class="{ 'hovered': helpMenuItemActive }">
+            <router-link
+              tag="li"
+              to="/info/uslovi-koriscenja"
+              class="secondary-link"
+              @click.native="multipleMenuChanges">
+              <div class="hovered-wrapper">
+                <div class="icon-wrapper">
+                  <img src="../../assets/info/terms-and-conditions.png" alt="Terms and conditions">
+                </div>
+                uslovi koršićenja
+              </div>
+            </router-link>
+            <router-link
+              tag="li"
+              to="/info/kako-kupiti"
+              class="secondary-link"
+              @click.native="multipleMenuChanges">
+                <div class="hovered-wrapper">
+                  <div class="icon-wrapper">
+                    <img src="../../assets/info/how-to-buy.png" alt="How to buy">
                   </div>
-                </router-link>
-              </ul>
-            </div>
-          </li>
+                  kako kupiti
+                </div>
+              </router-link>
+            <router-link
+              tag="li"
+              to="/info/placanje"
+              class="secondary-link"
+              @click.native="multipleMenuChanges">
+              <div class="hovered-wrapper">
+                <div class="icon-wrapper">
+                  <img src="../../assets/info/payment-methods.png" alt="Payment methods">
+                </div>
+                načini plaćanja
+              </div>
+            </router-link>
+            <router-link
+              tag="li"
+              to="/info/isporuka-i-povracaj"
+              class="secondary-link"
+              @click.native="multipleMenuChanges">
+              <div class="hovered-wrapper">
+                <div class="icon-wrapper">
+                  <img src="../../assets/info/delivery-return.png" alt="Delivery and return">
+                </div>
+                isporuka i povraćaj
+              </div>
+            </router-link>
+          </ul>
+        </li>
 
-          <router-link
-            tag="li"
-            to="/info/o-nama"
-            @click.native="multipleMenuChanges">
-            <div class="menu-item-headline">
-              o nama
-            </div>
-          </router-link>
-
-          <li>
-            <div class="menu-item-headline" :class="{ 'headline-active': helpMenuItemActive }">
-              pomoć
-              <span @click="changeHelpMenuItemActive">
-                <font-awesome-icon v-if="!helpMenuItemActive" icon="arrow-right" />
-                <font-awesome-icon v-if="helpMenuItemActive" icon="arrow-down" />
-              </span>
-            </div>
-            <div v-if="helpMenuItemActive">
-              <ul class="navigation-mobile-submenu">
-                <li>
-                  <ul>
-                    <router-link
-                      tag="li"
-                      to="/info/uslovi-koriscenja"
-                      class="submenu-item"
-                      @click.native="multipleMenuChanges">uslovi koršićenja</router-link>
-                  </ul>
-                </li>
-              </ul>
-
-              <ul class="navigation-mobile-submenu">
-                <li>
-                  <ul>
-                    <router-link
-                      tag="li"
-                      to="/info/kako-kupiti"
-                      class="submenu-item"
-                      @click.native="multipleMenuChanges">kako kupiti?</router-link>
-                    <router-link
-                      tag="li"
-                      to="/info/placanje"
-                      class="submenu-item"
-                      @click.native="multipleMenuChanges">načini plaćanja</router-link>
-                    <router-link
-                      tag="li"
-                      to="/info/isporuka-i-povracaj"
-                      class="submenu-item"
-                      @click.native="multipleMenuChanges">isporuka i povraćaj</router-link>
-                  </ul>
-                </li>
-              </ul>
-            </div>
-          </li>
-
-          <li>
-            <div class="menu-item-headline" :class="{ 'headline-active': contactMenuItemActive }">
-              kontakt
-              <span @click="changeContactMenuItemActive">
-                <font-awesome-icon v-if="!contactMenuItemActive" icon="arrow-right" />
-                <font-awesome-icon v-if="contactMenuItemActive" icon="arrow-down" />
-              </span>
-            </div>
-            <div v-if="contactMenuItemActive">
-              <ul class="navigation-mobile-submenu">
-                <li>
-                  <ul>
-                    <router-link
-                      tag="li"
-                      to="/info/kontakt"
-                      class="submenu-item"
-                      @click.native="multipleMenuChanges">kontaktirajte nas</router-link>
-                    <router-link
-                      tag="li"
-                      to="/info/najcesca-pitanja"
-                      class="submenu-item"
-                      @click.native="multipleMenuChanges">najčeśće postavljena pitanja</router-link>
-                  </ul>
-                </li>
-              </ul>
-            </div>
-
-          </li>
-
-        </ul>
-      </div>
+        <li
+          class="menu-item-headline"
+          :class="{
+            'headline-active': contactMenuItemActive,
+            'is-active': contactMenuItemActive
+          }"
+          @click="changeContactMenuItemActive">
+          kontakt
+          <span>
+            <img src="../../assets/right.png" alt="arrow right" />
+          </span>
+          <ul :class="{ 'hovered': contactMenuItemActive }">
+            <router-link
+              tag="li"
+              to="/info/kontakt"
+              class="secondary-link"
+              @click.native="multipleMenuChanges">
+              <div class="hovered-wrapper">
+                <div class="icon-wrapper">
+                  <img src="../../assets/info/contact-us.png" alt="Contact us">
+                </div>
+                pišite nam
+              </div>
+            </router-link>
+            <router-link
+              tag="li"
+              to="/info/najcesca-pitanja"
+              class="secondary-link"
+              @click.native="multipleMenuChanges">
+              <div class="hovered-wrapper">
+                <div class="icon-wrapper">
+                  <img src="../../assets/info/faq.png" alt="FAQ">
+                </div>
+                najčeśće postavljena pitanja
+              </div>
+            </router-link>
+          </ul>
+        </li>
+      </ul>
     </nav>
   </div>
 </template>
 
 <script>
 import { mapGetters } from 'vuex'
+import routesApi from '../../api/navigation-routes'
 
 export default {
   name: 'HeaderNavigationMobile',
@@ -249,10 +194,28 @@ export default {
       helpMenuItemActive: false,
       contactMenuItemActive: false,
       productsMenuItemActive: false,
-      clubsMenuItemActive: false
+      clubsMenuItemActive: false,
+      clubsRoutes: [],
+      productsRoutes: []
     }
   },
+  created() {
+    this.gettingClubsRoutes()
+    this.gettingProductsRoutes()
+  },
   methods: {
+    gettingClubsRoutes() {
+      return routesApi.getClubsRoutes()
+        .then(clubsRoutes => {
+          this.clubsRoutes = clubsRoutes.data.clubsRoutes
+        })
+    },
+    gettingProductsRoutes() {
+      return routesApi.getProductsRoutes()
+        .then(productsRoutes => {
+          this.productsRoutes = productsRoutes.data.productsRoutes
+        })
+    },
     changeMenu() {
       this.$store.commit('TOGGLE_MENU_ACTIVE')
       document.body.style.backgroundColor = "white";
@@ -275,6 +238,12 @@ export default {
       this.contactMenuItemActive = false
       this.clubsMenuItemActive = false
       this.productsMenuItemActive = false
+    },
+    getClubImgUrl(pic) {
+      return require('../../assets/logos/' + pic + '-logo.png')
+    },
+    getProductImgUrl(pic) {
+      return require('../../assets/products/' + pic + '.png')
     }
   },
   computed: {
@@ -301,6 +270,7 @@ export default {
   visibility: visible;
 }
 #header-nav {
+  font-size: 0;
   .nav-left,
   .nav-right {
     width: 100%;
@@ -319,10 +289,7 @@ export default {
     -o-transition: all .15s ease-in-out;
     transition: all .15s ease-in-out;
   }
-  img {
-    filter: grayscale(1);
-  }
-  li .menu-item-headline {
+  li.menu-item-headline {
     color: #000;
     padding: 0 20px;
 
@@ -336,8 +303,31 @@ export default {
       transition: transform .30s ease-in-out,right .35s ease-in-out .15s;
     }
   }
-  li .menu-item-headline.headline-active span {
-    transform: rotate(360deg);
+  // rotating arrow
+  li.menu-item-headline.headline-active span {
+    transform: rotate(90deg);
+  }
+  // sub-menu slide
+  li.menu-item-headline>ul {
+    max-height: 0;
+    overflow-y: hidden;
+    -webkit-transition: max-height .5s cubic-bezier(0,1,0,1);
+    -moz-transition: max-height .5s cubic-bezier(0,1,0,1);
+    -ms-transition: max-height .5s cubic-bezier(0,1,0,1);
+    -o-transition: max-height .5s cubic-bezier(0,1,0,1);
+    transition: max-height .5s cubic-bezier(0,1,0,1);
+  }
+  li.menu-item-headline>ul.hovered {
+    max-height: 1000px;
+    -webkit-transition: max-height 1s ease-in-out;
+    -moz-transition: max-height 1s ease-in-out;
+    -ms-transition: max-height 1s ease-in-out;
+    -o-transition: max-height 1s ease-in-out;
+    transition: max-height 1s ease-in-out;
+  }
+
+  li.dropdown .shop-menu {
+    transition: max-height .5s cubic-bezier(0,1,0,1);
   }
   .svg-inline--fa {
     font-size: 12px;
@@ -374,7 +364,7 @@ export default {
   }
 }
 @media (max-width: 768px) {
-  #hdr-nav>ul>li {
+  #header-nav>ul>li {
     opacity: 0;
     -webkit-transition: all .35s ease-in-out;
     -moz-transition: all .35s ease-in-out;
@@ -388,6 +378,7 @@ export default {
     transform: translate(-100px,0);
     transition-delay: .15s;
   }
+  // sub-menu slide
 }
 @media screen and (max-width: 1024px) {
   .nav-wrapper {
@@ -414,7 +405,7 @@ export default {
     -o-transform: translate(0,0);
     transform: translate(0,0);
   }
-  .menu-open #hdr-nav>ul>li {
+  #header-nav>ul>li {
     -webkit-transform: translate(0,0);
     -moz-transform: translate(0,0);
     -ms-transform: translate(0,0);
@@ -423,86 +414,4 @@ export default {
     opacity: 1;
   }
 }
-
-
-
-  /* .navigation-mobile-drawer {
-    position: fixed;
-    width: 0px;
-    height: 100%;
-    z-index: 1;
-    top: 0;
-    left: 0;
-    overflow-x: hidden;
-    transition: .3s;
-  }
-  .navigation-mobile-active {
-    width: 100%;
-    margin-top: 46px;
-  }
-  .navigation-mobile-menu {
-    display: flex;
-    flex-direction: column;
-    background-color: #fff;
-    font-size: 14px;
-    color: #000;
-    margin: 0;
-
-    .close-menu {
-      display: flex;
-      align-self: flex-end;
-      padding: 20px 20px 0 0;
-    }
-
-    li {
-      padding: 15px 20px;
-    }
-
-    .menu-item {
-      display: flex;
-      justify-content: space-between;
-    }
-
-    .menu-item-headline {
-      display: flex;
-      justify-content: space-between;
-    }
-
-    .headline-active {
-      font-weight: 600;
-    }
-  }
-
-  .navigation-mobile-submenu {
-    padding: 0 10px;
-
-    ul {
-      padding: 10px;
-    }
-
-    li {
-      padding: 0;
-    }
-
-    h3 {
-      font-size: 13px;
-      text-transform: uppercase;
-      font-weight: 400;
-      margin: 10px 0;
-    }
-
-    .navigation-mobile-submenu-headline-wrapper {
-      padding: 15px 0 5px;
-      border-bottom: 1px solid #e0e0e0;
-    }
-
-    .submenu-item {
-      font-size: 12px;
-      text-transform: none;
-      color: #888888;
-      letter-spacing: 0;
-      padding: 5px 0;
-    }
-  } */
-
 </style>
