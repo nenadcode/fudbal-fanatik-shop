@@ -1,7 +1,7 @@
 <template>
   <div id="app" :class="{ 'no-scroll': menuActive }">
     <Header />
-    <router-view></router-view>
+    <router-view :key="$route.fullPath"></router-view>
     <Footer />
   </div>
 </template>
@@ -39,6 +39,7 @@ export default {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-size: 16px;
+  overflow-x: hidden;
 }
 @media screen and (max-width: 1024px) {
   .no-scroll {
