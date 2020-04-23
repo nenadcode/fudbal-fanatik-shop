@@ -1,7 +1,7 @@
 <template>
   <div id="app" :class="{ 'no-scroll': menuActive }">
     <Header />
-    <router-view></router-view>
+    <router-view :key="$route.fullPath"></router-view>
     <Footer />
   </div>
 </template>
@@ -28,7 +28,7 @@ export default {
 <style lang="scss">
 @import url('https://fonts.googleapis.com/css?family=Montserrat');
 @import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro');
-@import url('https://fonts.googleapis.com/css?family=Raleway:400,600,700&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Raleway:300,400,600,700&display=swap');
 @import "@/assets/scss/style.scss";
 @import "@/assets/scss/navigation.scss";
 
@@ -39,6 +39,7 @@ export default {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-size: 16px;
+  overflow-x: hidden;
 }
 @media screen and (max-width: 1024px) {
   .no-scroll {

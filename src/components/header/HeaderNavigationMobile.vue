@@ -23,17 +23,17 @@
             </span>
             <ul :class="{ 'hovered': clubsMenuItemActive }">
               <router-link
-                v-for="club in this.clubsRoutes"
-                :key="club._id"
+                v-for="brand in this.brands"
+                :key="brand._id"
                 tag="li"
-                :to="`/klubovi/${club.clubShortName}`"
+                :to="`/klubovi/${brand._id}`"
                 class="secondary-link"
                 @click.native="multipleMenuChanges">
                 <div class="hovered-wrapper">
                   <div class="icon-wrapper">
-                    <img :src="getClubImgUrl(club.clubShortName)" alt="club.clubName">
+                    <img :src="getBrandImgUrl(brand.shortName)" alt="brand.name">
                   </div>
-                  {{ club.clubName }}
+                  {{ brand.name }}
                 </div>
               </router-link>
             </ul>
@@ -195,19 +195,19 @@ export default {
       contactMenuItemActive: false,
       productsMenuItemActive: false,
       clubsMenuItemActive: false,
-      clubsRoutes: [],
+      brands: [],
       productsRoutes: []
     }
   },
   created() {
-    this.gettingClubsRoutes()
+    this.gettingBrands()
     this.gettingProductsRoutes()
   },
   methods: {
-    gettingClubsRoutes() {
-      return routesApi.getClubsRoutes()
-        .then(clubsRoutes => {
-          this.clubsRoutes = clubsRoutes.data.clubsRoutes
+    gettingBrands() {
+      return routesApi.getBrands()
+        .then(brands => {
+          this.brands = brands.data.brands
         })
     },
     gettingProductsRoutes() {
@@ -239,7 +239,7 @@ export default {
       this.clubsMenuItemActive = false
       this.productsMenuItemActive = false
     },
-    getClubImgUrl(pic) {
+    getBrandImgUrl(pic) {
       return require('../../assets/logos/' + pic + '-logo.png')
     },
     getProductImgUrl(pic) {

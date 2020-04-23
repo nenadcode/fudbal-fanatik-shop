@@ -23,7 +23,7 @@ export default new Router({
       component: Home
     },
     {
-      path: '/klubovi/:name',
+      path: '/klubovi/:id',
       component: ClubsTemplate
     },
     {

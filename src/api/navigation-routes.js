@@ -1,7 +1,11 @@
 import { http } from '../services/http'
 
-function getClubsRoutes() {
-  return http.get('/clubs-routes')
+function getBrands() {
+  return http.get('/brands')
+}
+
+function getBrand(id) {
+  return http.get(`/brands/${id}`)
 }
 
 function getProductsRoutes() {
@@ -9,6 +13,7 @@ function getProductsRoutes() {
 }
 
 export default {
-  getClubsRoutes,
+  getBrands,
+  getBrand,
   getProductsRoutes
 }
