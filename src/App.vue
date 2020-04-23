@@ -28,7 +28,7 @@ export default {
 <style lang="scss">
 @import url('https://fonts.googleapis.com/css?family=Montserrat');
 @import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro');
-@import url('https://fonts.googleapis.com/css?family=Raleway:400,600,700&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Raleway:300,400,600,700&display=swap');
 @import "@/assets/scss/style.scss";
 @import "@/assets/scss/navigation.scss";
 
