@@ -2,7 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Home from '@/components/Home'
 
-import ClubsTemplate from '@/components/clubs/ClubsTemplate'
+import BrandsTemplate from '@/components/clubs/BrandsTemplate'
 import ProductsTemplate from '@/components/products/ProductsTemplate'
 
 import AboutUs from '@/components/info/AboutUs'
@@ -24,7 +24,7 @@ export default new Router({
     },
     {
       path: '/klubovi/:id',
-      component: ClubsTemplate
+      component: BrandsTemplate
     },
     {
       path: '/proizvodi/:name',

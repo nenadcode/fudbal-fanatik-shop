@@ -63,7 +63,7 @@
 import routesApi from '../../api/navigation-routes'
 
 export default {
-  name: 'ClubsTemplate',
+  name: 'BrandsTemplate',
   data() {
     return {
       routeId: this.$route.params.id,
