@@ -9,7 +9,7 @@
       <span class="menu-icon-bar"></span>
     </div>
     <router-link to="/" id="logo-f">
-      <img src="../../assets/fudbal-fanatik-small.png" alt="">
+      <img src="../../assets/fudbal-fanatik-small.png" alt="Fudbal Fanatik logo">
     </router-link>
     <div class="hdr-right">
       <font-awesome-icon class="" icon="shopping-cart" />
