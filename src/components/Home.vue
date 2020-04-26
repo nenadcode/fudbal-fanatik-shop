@@ -5,14 +5,8 @@
 </template>
 
 <script>
-import { http } from '../services/http'
-
 export default {
-  name: 'Home',
-
-  created() {
-    http.get('http://localhost:3000/products');
-  }
+  name: 'Home'
 }
 </script>
 
@@ -28,17 +22,8 @@ export default {
     align-items: center;
 
     h1 {
-      display: flex;
-      justify-content: center;
-      width: 100%;
-      font-family: 'Source Sans Pro', 'HelveticaNeue', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-      padding: 20px 0 8px 0;
-      border-bottom: 1px solid #ededed;
-      text-transform: uppercase;
-      font-size: 2em;
-      font-weight: 400;
-      line-height: 1.4;
-      color: #000;
+      font-weight: 300;
+      font-size: 30px;
     }
 
     .ff-logo-image-wrapper {
@@ -64,18 +49,15 @@ export default {
       color: #000;
       text-transform: uppercase;
     }
-
     a {
       color: #003cff;
     }
-
     p {
-      font-family: "Roboto","HelveticaNeue","Helvetica Neue",Helvetica,Arial,sans-serif;
-      font-weight: 400;
+      font-size: 13px;
+      color: #8a8a8a;
+      max-width: 500px;
+      margin: auto;
       line-height: 1.6;
-      font-size: 16px;
-      color: #4f4f4f;
-      -webkit-font-smoothing: antialiased;
     }
 
     .bold-text {
