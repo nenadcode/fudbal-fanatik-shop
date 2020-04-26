@@ -3,7 +3,7 @@ import Router from 'vue-router'
 import Home from '@/components/Home'
 
 import BrandsTemplate from '@/components/clubs/BrandsTemplate'
-import ProductsTemplate from '@/components/products/ProductsTemplate'
+import CategoriesTemplate from '@/components/categories/CategoriesTemplate'
 
 import AboutUs from '@/components/info/AboutUs'
 import Conditions from '@/components/info/Conditions'
@@ -27,8 +27,8 @@ export default new Router({
       component: BrandsTemplate
     },
     {
-      path: '/proizvodi/:name',
-      component: ProductsTemplate
+      path: '/proizvodi/:id',
+      component: CategoriesTemplate
     },
     {
       path: '/info/o-nama',

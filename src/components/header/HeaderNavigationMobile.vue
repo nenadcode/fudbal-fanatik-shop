@@ -52,17 +52,17 @@
           </span>
           <ul :class="{ 'hovered': productsMenuItemActive }">
             <router-link
-              v-for="product in this.productsRoutes"
-              :key="product._id"
+              v-for="category in this.categories"
+              :key="category._id"
               tag="li"
-              :to="`/proizvodi/${product.productShortName}`"
+              :to="`/proizvodi/${category._id}`"
               class="secondary-link"
               @click.native="multipleMenuChanges">
               <div class="hovered-wrapper">
                 <div class="icon-wrapper">
-                  <img :src="getProductImgUrl(product.productShortName)" alt="Liverpool logo">
+                  <img :src='`http://localhost:3000/${category.image}`' alt="Liverpool logo">
                 </div>
-                {{ product.productName }}
+                {{ category.name }}
               </div>
             </router-link>
           </ul>
@@ -196,12 +196,12 @@ export default {
       productsMenuItemActive: false,
       clubsMenuItemActive: false,
       brands: [],
-      productsRoutes: []
+      categories: []
     }
   },
   created() {
     this.gettingBrands()
-    this.gettingProductsRoutes()
+    this.gettingCategories()
   },
   methods: {
     gettingBrands() {
@@ -210,10 +210,10 @@ export default {
           this.brands = brands.data.brands
         })
     },
-    gettingProductsRoutes() {
-      return routesApi.getProductsRoutes()
-        .then(productsRoutes => {
-          this.productsRoutes = productsRoutes.data.productsRoutes
+    gettingCategories() {
+      return routesApi.getCategories()
+        .then(categories => {
+          this.categories = categories.data.categories
         })
     },
     changeMenu() {

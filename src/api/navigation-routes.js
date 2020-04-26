@@ -8,12 +8,17 @@ function getBrand(id) {
   return http.get(`/brands/${id}`)
 }
 
-function getProductsRoutes() {
-  return http.get('/products-routes')
+function getCategories() {
+  return http.get('/categories')
+}
+
+function getCategory(id) {
+  return http.get(`/categories/${id}`)
 }
 
 export default {
   getBrands,
   getBrand,
-  getProductsRoutes
+  getCategories,
+  getCategory
 }

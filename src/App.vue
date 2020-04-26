@@ -31,6 +31,7 @@ export default {
 @import url('https://fonts.googleapis.com/css?family=Raleway:300,400,600,700&display=swap');
 @import "@/assets/scss/style.scss";
 @import "@/assets/scss/navigation.scss";
+@import "@/assets/scss/brand-category-template.scss";
 @import "@/assets/scss/footer.scss";
 
 #app {
