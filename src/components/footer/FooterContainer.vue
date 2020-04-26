@@ -33,7 +33,7 @@
         </li>
       </ul>
       <div class="footer-details">
-        <router-link tag="a" to="/">
+        <router-link tag="a" to="/pocetna">
           <img src="../../assets/fudbal-fanatik-footer.png" alt="Fudbal Fanatik logo" class="ff-logo-small">
         </router-link>
         <div class="footer-small">

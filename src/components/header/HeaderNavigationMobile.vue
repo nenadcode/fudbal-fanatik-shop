@@ -4,7 +4,7 @@
       <ul class="main-nav nav-left">
         <router-link
           tag="li"
-          to="/"
+          to="/pocetna"
           class="menu-item-headline"
           @click.native="multipleMenuChanges">
           početna
