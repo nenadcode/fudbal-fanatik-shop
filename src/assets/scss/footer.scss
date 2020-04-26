@@ -1,0 +1,90 @@
+#footer-main {
+  display: block!important;
+  text-align: center;
+  width: 100%;
+  text-transform: lowercase;
+  padding-top: 65px;
+}
+#footer-navigation {
+  border-bottom: 1px solid #eee;
+  white-space: nowrap;
+  border-top: 1px solid #eee;
+
+  ul {
+    margin: 0;
+  }
+  li {
+    display: inline-block;
+    line-height: 1;
+  }
+  li a {
+    display: block;
+    color: #333;
+    padding: 20px 10px;
+    font-size: 12px;
+    line-height: 1;
+    font-weight: 400;
+  }
+}
+#footer-content {
+  position: relative;
+  width: 84%;
+  max-width: 1180px;
+  margin: 0 auto 45px auto;
+
+  .footer-social {
+    padding: 30px 0 30px 0;
+    margin: 0;
+    border-bottom: 1px solid #f1f1f1;
+
+    li {
+      display: inline-block;
+      font-size: 16px;
+    }
+    li a {
+      color: #333;
+    }
+    .facebook-icon {
+      padding-right: 15px;
+    }
+    .instagram-icon {
+      padding-left: 15px;
+    }
+  }
+}
+.footer-details {
+  margin-top: 30px;
+
+  .ff-logo-small {
+    width: 30px;
+  }
+  .footer-small {
+    margin: 20px auto 0;
+    font-size: 12px;
+    color: #aaa;
+    max-width: 320px;
+    line-height: 20px;
+    font-weight: 300;
+  }
+}
+
+@media (max-width: 767px) {
+  #footer-navigation {
+    li {
+      display: block;
+    }
+    li a {
+      padding: 12px 8%;
+      border-top: 1px solid #f7f8f9;
+      border-bottom: 1px solid #f7f8f9;
+    }
+  }
+  #footer-content {
+    width: 100%;
+    margin: 0 auto 25px auto;
+
+    .footer-social {
+      letter-spacing: .03em;
+    }
+  }
+}

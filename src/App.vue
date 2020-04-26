@@ -32,6 +32,7 @@ export default {
 @import "@/assets/scss/style.scss";
 @import "@/assets/scss/navigation.scss";
 @import "@/assets/scss/brand-category-template.scss";
+@import "@/assets/scss/footer.scss";
 
 #app {
   margin: 0;
