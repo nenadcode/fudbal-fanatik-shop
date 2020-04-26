@@ -1,13 +1,10 @@
 <template>
   <div class="main-content">
-    <div v-if="brand._id != 4" class="item-products">
-      <h1 class="item-title">{{ brand.name }}</h1>
+    <div v-if="productsCount < 7" class="item-products">
+      <h1 class="item-title">{{ category.name }}</h1>
       <section class="item-content">
-        <div class="item-image">
-          <img :src='`http://localhost:3000/${brand.backgroundImage}`' alt="" />
-        </div>
         <div id="item-description">
-          <span>{{ brand.shortDescription }}</span>
+          <span>{{ category.shortDescription }}</span>
         </div>
         <div id="item-products-wrapper">
           <div
@@ -31,13 +28,10 @@
       </section>
     </div>
     <div v-else class="item-ly2-products">
-      <h1 class="item-title">{{ brand.name }}</h1>
+      <h1 class="item-title">{{ category.name }}</h1>
       <section class="item-content">
-        <div class="item-image">
-          <img :src='`http://localhost:3000/${brand.backgroundImage}`' alt="" />
-        </div>
         <div id="item-description">
-          <span>{{ brand.shortDescription }}</span>
+          <span>{{ category.shortDescription }}</span>
         </div>
         <div id="item-ly2-products-wrapper">
           <div
@@ -63,26 +57,27 @@
 import routesApi from '../../api/navigation-routes'
 
 export default {
-  name: 'BrandsTemplate',
+  name: 'CategoriesTemplate',
   data() {
     return {
       routeId: this.$route.params.id,
-      brand: {},
-      products: []
+      category: {},
+      products: [],
+      productsCount: null
     }
   },
   created() {
-    this.gettingBrand()
+    this.gettingCategory()
   },
   methods: {
-    gettingBrand() {
-      return routesApi.getBrand(this.routeId)
-        .then(brand => {
-          this.brand = brand.data.resources.brand
-          this.products = brand.data.resources.products
+    gettingCategory() {
+      return routesApi.getCategory(this.routeId)
+        .then(category => {
+          this.category = category.data.resources.category
+          this.products = category.data.resources.products
+          this.productsCount = category.data.productsCount
         })
     }
   }
 }
-
 </script>
