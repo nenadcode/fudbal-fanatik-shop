@@ -1,0 +1,1 @@
+export const RECEIVE_BRANDS_ROUTES = 'brandsRoutes/RECEIVE_BRANDS_ROUTES'

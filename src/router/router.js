@@ -2,7 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Home from '@/components/Home'
 
-import BrandsTemplate from '@/components/clubs/BrandsTemplate'
+import BrandsTemplate from '@/components/brands/BrandsTemplate'
 import CategoriesTemplate from '@/components/categories/CategoriesTemplate'
 
 import AboutUs from '@/components/info/AboutUs'

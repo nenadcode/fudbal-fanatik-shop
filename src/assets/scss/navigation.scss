@@ -166,6 +166,7 @@
   }
   li.menu-item-headline>ul.hovered {
     max-height: 1000px;
+    margin-bottom: 20px;
     -webkit-transition: max-height 1s ease-in-out;
     -moz-transition: max-height 1s ease-in-out;
     -ms-transition: max-height 1s ease-in-out;
@@ -175,21 +176,25 @@
 
   // secondary links
   .secondary-link {
-    line-height: 1;
-    font-size: 12px;
     display: inline-block;
     background: #fff;
     width: 33.33%;
     max-width: 170px;
-    margin: 0;
+    margin: 0 0 20px 0;
+    padding: 0;
     vertical-align: top;
     border: none!important;
     position: relative;
     text-align: center;
-    padding: 0;
+    text-transform: uppercase;
+    letter-spacing: .1em;
+    font-size: 9px;
+    line-height: 1.4;
+    font-weight: 500;
+    color: #8a8a8a;
 
     .hovered-wrapper {
-      padding: 10px 30px 30px;
+      padding: 10px 25px 0;
       text-transform: uppercase;
       letter-spacing: .1em;
       font-size: 9px;
