@@ -15,7 +15,7 @@
       <font-awesome-icon class="" icon="shopping-cart" />
       0
     </div>
-    <header-navigation-mobile />
+    <header-navigation-mobile v-if="menuActive" />
   </header>
 </template>
 

@@ -13,15 +13,14 @@
         <li
           class="menu-item-headline"
           :class="{
-            'headline-active': clubsMenuItemActive,
-            'is-active': clubsMenuItemActive
+            'headline-active': brandsMenuItemActive,
           }"
-          @click="changeClubsMenuItemActive">
+          @click="changeBrandsMenuItemActive">
             klubovi
             <span>
               <img src="../../assets/right.png" alt="arrow right" />
             </span>
-            <ul :class="{ 'hovered': clubsMenuItemActive }">
+            <ul :class="{ 'hovered': brandsMenuItemActive }">
               <router-link
                 v-for="brand in this.brands"
                 :key="brand._id"
@@ -33,8 +32,8 @@
                   <div class="icon-wrapper">
                     <img :src="getBrandImgUrl(brand.shortName)" alt="brand.name">
                   </div>
-                  {{ brand.name }}
                 </div>
+                {{ brand.name }}
               </router-link>
             </ul>
         </li>
@@ -43,7 +42,6 @@
           class="menu-item-headline"
           :class="{
             'headline-active': productsMenuItemActive,
-            'is-active': productsMenuItemActive
           }"
           @click="changeProductsMenuItemActive">
           proizvodi
@@ -81,7 +79,6 @@
           class="menu-item-headline"
           :class="{
             'headline-active': helpMenuItemActive,
-            'is-active': helpMenuItemActive
           }"
           @click="changeHelpMenuItemActive">
             pomoć
@@ -144,7 +141,6 @@
           class="menu-item-headline"
           :class="{
             'headline-active': contactMenuItemActive,
-            'is-active': contactMenuItemActive
           }"
           @click="changeContactMenuItemActive">
           kontakt
@@ -194,7 +190,7 @@ export default {
       helpMenuItemActive: false,
       contactMenuItemActive: false,
       productsMenuItemActive: false,
-      clubsMenuItemActive: false,
+      brandsMenuItemActive: false,
       brands: [],
       categories: []
     }
@@ -202,6 +198,12 @@ export default {
   created() {
     this.gettingBrands()
     this.gettingCategories()
+    this.collapseMenuItems()
+  },
+  updated() {
+    if (this.$store.state.menuActive == false) {
+      this.collapseMenuItems()
+    }
   },
   methods: {
     gettingBrands() {
@@ -216,28 +218,39 @@ export default {
           this.categories = categories.data.categories
         })
     },
-    changeMenu() {
-      this.$store.commit('TOGGLE_MENU_ACTIVE')
-      document.body.style.backgroundColor = "white";
-    },
-    changeClubsMenuItemActive() {
-      return this.clubsMenuItemActive = !this.clubsMenuItemActive
-    },
-    changeProductsMenuItemActive() {
-      return this.productsMenuItemActive = !this.productsMenuItemActive
-    },
-    changeHelpMenuItemActive() {
-      return this.helpMenuItemActive = !this.helpMenuItemActive
-    },
-    changeContactMenuItemActive() {
-      return this.contactMenuItemActive = !this.contactMenuItemActive
-    },
-    multipleMenuChanges() {
-      this.changeMenu()
+    collapseMenuItems() {
+      this.brandsMenuItemActive = false
+      this.productsMenuItemActive = false
       this.helpMenuItemActive = false
       this.contactMenuItemActive = false
-      this.clubsMenuItemActive = false
+    },
+    changeBrandsMenuItemActive() {
       this.productsMenuItemActive = false
+      this.helpMenuItemActive = false
+      this.contactMenuItemActive = false
+      this.brandsMenuItemActive = !this.brandsMenuItemActive
+    },
+    changeProductsMenuItemActive() {
+      this.brandsMenuItemActive = false
+      this.helpMenuItemActive = false
+      this.contactMenuItemActive = false
+      this.productsMenuItemActive = !this.productsMenuItemActive
+    },
+    changeHelpMenuItemActive() {
+      this.brandsMenuItemActive = false
+      this.productsMenuItemActive = false
+      this.contactMenuItemActive = false
+      this.helpMenuItemActive = !this.helpMenuItemActive
+    },
+    changeContactMenuItemActive() {
+      this.brandsMenuItemActive = false
+      this.productsMenuItemActive = false
+      this.helpMenuItemActive = false
+      this.contactMenuItemActive = !this.contactMenuItemActive
+    },
+    multipleMenuChanges() {
+      this.$store.commit('TOGGLE_MENU_ACTIVE')
+      document.body.style.backgroundColor = "white";
     },
     getBrandImgUrl(pic) {
       return require('../../assets/logos/' + pic + '-logo.png')

@@ -1,1 +1,0 @@
-export const RECEIVE_CLUBS_ROUTES = 'clubsRoutes/RECEIVE_CLUBS_ROUTES'

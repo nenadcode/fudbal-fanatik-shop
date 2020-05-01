@@ -1,13 +1,13 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 
-import clubsRoutesModule from './modules/clubRoutes'
+import brandsRoutesModule from './modules/brandsRoutes'
 
 Vue.use(Vuex)
 
 export const store = new Vuex.Store ({
   modules: {
-    clubsRoutesModule
+    brandsRoutesModule
   },
   state: {
     menuActive: false
