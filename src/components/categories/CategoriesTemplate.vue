@@ -11,15 +11,21 @@
             v-for="product in this.products"
             :key="product._id"
             class="item-product">
-            <div class="item-image-wrapper">
-              <img :src='`http://localhost:3000/${product.image}`' alt="" />
-            </div>
-            <div class="item-product-name">{{ product.title }}</div>
-            <div class="item-product-description">{{ product.description }}</div>
-            <div class="item-product-price">{{ product.price }} RSD</div>
             <router-link
               tag="a"
-              to="/"
+              :to="`/product/${product._id}`"
+              class="item-product-wrapper">
+              <div class="item-image-wrapper">
+                <img v-if="product.image" :src='`http://localhost:3000/${product.image}`' alt="" />
+                <img v-else :src='`http://localhost:3000/${product.images[0]}`' alt="">
+              </div>
+              <div class="item-product-name">{{ product.title }}</div>
+              <div class="item-product-description">{{ product.description }}</div>
+              <div class="item-product-price">{{ product.price }} RSD</div>
+            </router-link>
+            <router-link
+              tag="a"
+              :to="`/`"
               class="button button-item-product">
               Kupi
             </router-link>
@@ -33,15 +39,16 @@
         <div id="item-description">
           <span>{{ category.shortDescription }}</span>
         </div>
-        <div id="item-ly2-products-wrapper">
+        <div class="item-ly2-products-wrapper">
           <div
             v-for="product in this.products"
             :key="product._id"
             class="item-ly2-product">
             <router-link
               tag="a"
-              to="/">
-              <img :src='`http://localhost:3000/${product.image}`' alt="" />
+              :to="`/product/${product._id}`">
+              <img v-if="product.image" :src='`http://localhost:3000/${product.image}`' alt="" />
+                <img v-else :src='`http://localhost:3000/${product.images[0]}`' alt="">
               <div class="item-ly2-product-name">{{ product.title }}</div>
               <div class="item-ly2-product-description">{{ product.description }}</div>
               <span class="item-ly2-product-price">{{ product.price }} RSD</span>

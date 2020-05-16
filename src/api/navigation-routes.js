@@ -16,9 +16,14 @@ function getCategory(id) {
   return http.get(`/categories/${id}`)
 }
 
+function getProduct(id) {
+  return http.get(`/product/${id}`)
+}
+
 export default {
   getBrands,
   getBrand,
   getCategories,
-  getCategory
+  getCategory,
+  getProduct
 }

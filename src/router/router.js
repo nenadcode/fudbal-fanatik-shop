@@ -4,6 +4,7 @@ import Home from '@/components/Home'
 
 import BrandsTemplate from '@/components/brands/BrandsTemplate'
 import CategoriesTemplate from '@/components/categories/CategoriesTemplate'
+import ProductTemplate from '@/components/product/ProductTemplate'
 
 import AboutUs from '@/components/info/AboutUs'
 import Conditions from '@/components/info/Conditions'
@@ -29,6 +30,10 @@ export default new Router({
     {
       path: '/proizvodi/:id',
       component: CategoriesTemplate
+    },
+    {
+      path: '/product/:id',
+      component: ProductTemplate
     },
     {
       path: '/info/o-nama',
