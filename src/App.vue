@@ -32,11 +32,12 @@ export default {
 @import "@/assets/scss/style.scss";
 @import "@/assets/scss/navigation.scss";
 @import "@/assets/scss/brand-category-template.scss";
+@import "@/assets/scss/product-template.scss";
 @import "@/assets/scss/footer.scss";
 
 #app {
   margin: 0;
-  display: grid;
+  // display: grid;
   font-family: 'Raleway', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
