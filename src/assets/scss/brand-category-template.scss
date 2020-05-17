@@ -70,6 +70,9 @@
   .item-ly2-product-description {
     font-weight: 300;
   }
+  .item-ly2-product-price {
+    color: #8a8a8a;
+  }
 }
 @media screen and (max-width: 499px) {
   .item-content {
@@ -88,9 +91,10 @@
     }
     .item-product-name {
       font-size: 17px;
+      margin-bottom: 10px;
     }
     .item-product-description {
-      font-size: 15px;
+      font-size: 13px;
       margin: 5px 0;
     }
     .item-product-price {
@@ -111,6 +115,7 @@
     .item-ly2-product-description {
       font-size: 11px;
       color: #222;
+      margin-bottom: 5px;
     }
   }
 }

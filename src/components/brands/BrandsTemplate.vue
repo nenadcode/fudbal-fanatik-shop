@@ -23,7 +23,6 @@
                 <img v-else :src='`http://localhost:3000/${product.images[0]}`' alt="">
               </div>
               <div class="item-product-name">{{ product.title }}</div>
-              <div class="item-product-description">{{ product.description }}</div>
               <div class="item-product-price">{{ product.price }} RSD</div>
             </router-link>
             <router-link
@@ -56,7 +55,6 @@
               <img v-if="product.image" :src='`http://localhost:3000/${product.image}`' alt="" />
               <img v-else :src='`http://localhost:3000/${product.images[0]}`' alt="">
               <div class="item-ly2-product-name">{{ product.title }}</div>
-              <div class="item-ly2-product-description">{{ product.description }}</div>
               <span class="item-ly2-product-price">{{ product.price }} RSD</span>
             </router-link>
           </div>

@@ -37,7 +37,7 @@
         </div>
       </div>
     </div>
-    <div class="item-ly2-products">
+    <div class="item-ly2-products" v-if="this.brandProducts.length">
       <section class="item-content">
         <div class="item-ly2-products-wrapper">
           <h1 class="item-title">Proizvodi istog kluba</h1>
@@ -57,7 +57,7 @@
         </div>
       </section>
     </div>
-    <div class="item-ly2-products">
+    <div class="item-ly2-products" v-if="this.categoryProducts.length">
       <section class="item-content">
         <div class="item-ly2-products-wrapper">
           <h1 class="item-title">Povezani proizvodi</h1>
@@ -86,7 +86,7 @@ import { Carousel, Slide } from 'vue-carousel';
 
 export default {
   name: 'ProductTemplate',
-   components: {
+  components: {
     Carousel,
     Slide
   },

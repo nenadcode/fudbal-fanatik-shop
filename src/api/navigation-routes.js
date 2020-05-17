@@ -20,10 +20,15 @@ function getProduct(id) {
   return http.get(`/product/${id}`)
 }
 
+function getHomePageProducts() {
+  return http.get('/home-page-products')
+}
+
 export default {
   getBrands,
   getBrand,
   getCategories,
   getCategory,
-  getProduct
+  getProduct,
+  getHomePageProducts
 }
