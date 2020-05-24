@@ -28,6 +28,10 @@ import HeaderNavigation from './HeaderNavigation.vue'
 
 export default {
   name: 'HeaderContainer',
+  components: {
+    HeaderNavigationMobile,
+    HeaderNavigation
+  },
   computed: {
     ...mapGetters([
       'menuActive'
@@ -41,10 +45,6 @@ export default {
     isMobile() {
       return screen.width < 1025 ? true : false
     }
-  },
-  components: {
-    HeaderNavigationMobile,
-    HeaderNavigation
   }
 }
 </script>

@@ -10,6 +10,8 @@
           početna
         </router-link>
 
+        <brands-menu :brands="this.brands" />
+
         <li
           class="menu-item-headline"
           :class="{
@@ -183,8 +185,13 @@
 import { mapGetters } from 'vuex'
 import routesApi from '../../api/navigation-routes'
 
+import BrandsMenu from './mobile-navigation/BrandsMenu.vue'
+
 export default {
   name: 'HeaderNavigationMobile',
+  components: {
+    BrandsMenu
+  },
   data() {
     return {
       helpMenuItemActive: false,
