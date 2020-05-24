@@ -38,7 +38,6 @@ export default {
 
 #app {
   margin: 0;
-  // display: grid;
   font-family: 'Raleway', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;

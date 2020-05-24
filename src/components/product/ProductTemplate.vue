@@ -1,25 +1,25 @@
 <template>
-  <div id="product-area">
+  <div id="single-product-area">
     <div class="wrapper">
-      <div class="mobile-product-row">
+      <div class="product-row">
         <div class="product-hdr">
           <h3 class="product-category">{{ this.categoryName }}</h3>
-          <h1 id="subtitle-mobile">{{ this.product.title }}</h1>
+          <h1 id="product-title">{{ this.product.title }}</h1>
           <p class="pricea">{{ this.product.price }} RSD</p>
         </div>
       </div>
-      <div id="mobile-product-gallery">
+      <div id="product-gallery">
         <carousel :perPage="1" v-if="this.product.images">
           <slide v-for="image in this.product.images" :key="image.id">
             <img :src='`http://localhost:3000/${image}`' class="carousel-img"/>
           </slide>
         </carousel>
-        <div v-else class="mobile-product-image-wrapper">
-          <img :src='`http://localhost:3000/${this.product.image}`' class="mobile-product-image" />
+        <div v-else class="product-image-wrapper">
+          <img :src='`http://localhost:3000/${this.product.image}`' class="product-image" />
         </div>
       </div>
-      <div class="mobile-product-details">
-        <p class="mobile-product-description" v-for="paragraph in this.product.description" :key="paragraph.id">{{ paragraph }}</p>
+      <div class="product-details">
+        <p class="product-description" v-for="paragraph in this.product.description" :key="paragraph.id">{{ paragraph }}</p>
         <div class="submit-wrapper">
           <button class="button submit-button">Dodaj u korpu</button>
         </div>
@@ -40,7 +40,7 @@
     <div class="item-ly2-products" v-if="this.brandProducts.length">
       <section class="item-content">
         <div class="item-ly2-products-wrapper">
-          <h1 class="item-title">Proizvodi istog kluba</h1>
+          <h2 class="item-title">Proizvodi istog kluba</h2>
           <div
             v-for="brandProduct in this.brandProducts"
             :key="brandProduct._id"
@@ -48,8 +48,10 @@
             <router-link
               tag="a"
               :to="`/product/${brandProduct._id}`">
-              <img v-if="brandProduct.image" :src='`http://localhost:3000/${brandProduct.image}`' alt="" />
-              <img v-else :src='`http://localhost:3000/${brandProduct.images[0]}`' alt="">
+              <div class="item-ly2-image-wrapper">
+                <img v-if="brandProduct.image" :src='`http://localhost:3000/${brandProduct.image}`' alt="" />
+                <img v-else :src='`http://localhost:3000/${brandProduct.images[0]}`' alt="">
+              </div>
               <div class="item-ly2-product-name">{{ brandProduct.title }}</div>
               <span class="item-ly2-product-price">{{ brandProduct.price }} RSD</span>
             </router-link>
@@ -60,7 +62,7 @@
     <div class="item-ly2-products" v-if="this.categoryProducts.length">
       <section class="item-content">
         <div class="item-ly2-products-wrapper">
-          <h1 class="item-title">Povezani proizvodi</h1>
+          <h2 class="item-title">Povezani proizvodi</h2>
           <div
             v-for="categoryProduct in this.categoryProducts"
             :key="categoryProduct._id"
@@ -68,8 +70,10 @@
             <router-link
               tag="a"
               :to="`/product/${categoryProduct._id}`">
-              <img v-if="categoryProduct.image" :src='`http://localhost:3000/${categoryProduct.image}`' alt="" />
-              <img v-else :src='`http://localhost:3000/${categoryProduct.images[0]}`' alt="">
+              <div class="item-ly2-image-wrapper">
+                <img v-if="categoryProduct.image" :src='`http://localhost:3000/${categoryProduct.image}`' alt="" />
+                <img v-else :src='`http://localhost:3000/${categoryProduct.images[0]}`' alt="">
+              </div>
               <div class="item-ly2-product-name">{{ categoryProduct.title }}</div>
               <span class="item-ly2-product-price">{{ categoryProduct.price }} RSD</span>
             </router-link>
@@ -137,10 +141,11 @@ export default {
 </script>
 
 <style scoped lang="scss">
-.item-title {
-  font-size: 20px;
-  font-weight: 600;
-  text-align: left;
-  margin: 0 0 30px 13px;
+#single-product-area {
+  .item-title {
+    font-size: 24px;
+    font-weight: 600;
+    margin: 0 0 30px 13px;
+  }
 }
 </style>

@@ -1,12 +1,12 @@
 <template>
   <div class="main-content">
-    <div v-if="productsCount < 7" class="item-products">
+    <div v-if="productsCount < 3" class="item-products">
       <h1 class="item-title">{{ category.name }}</h1>
       <section class="item-content">
-        <div id="item-description">
+        <div class="item-description" v-if="category.shortDescription">
           <span>{{ category.shortDescription }}</span>
         </div>
-        <div id="item-products-wrapper">
+        <div class="item-products-wrapper">
           <div
             v-for="product in this.products"
             :key="product._id"
@@ -22,12 +22,6 @@
               <div class="item-product-name">{{ product.title }}</div>
               <div class="item-product-price">{{ product.price }} RSD</div>
             </router-link>
-            <router-link
-              tag="a"
-              :to="`/`"
-              class="button button-item-product">
-              Kupi
-            </router-link>
           </div>
         </div>
       </section>
@@ -35,7 +29,7 @@
     <div v-else class="item-ly2-products">
       <h1 class="item-title">{{ category.name }}</h1>
       <section class="item-content">
-        <div id="item-description">
+        <div class="item-description" v-if="category.shortDescription">
           <span>{{ category.shortDescription }}</span>
         </div>
         <div class="item-ly2-products-wrapper">
@@ -46,8 +40,10 @@
             <router-link
               tag="a"
               :to="`/product/${product._id}`">
-              <img v-if="product.image" :src='`http://localhost:3000/${product.image}`' alt="" />
+              <div class="item-ly2-image-wrapper">
+                <img v-if="product.image" :src='`http://localhost:3000/${product.image}`' alt="" />
                 <img v-else :src='`http://localhost:3000/${product.images[0]}`' alt="">
+              </div>
               <div class="item-ly2-product-name">{{ product.title }}</div>
               <span class="item-ly2-product-price">{{ product.price }} RSD</span>
             </router-link>

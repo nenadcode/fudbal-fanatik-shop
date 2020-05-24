@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <div class="mobile-product-gallery">
+  <div id="home-page">
+    <div class="product-gallery">
       <carousel :perPage="1" v-if="this.productsImageSlider.length">
         <slide v-for="image in this.productsImageSlider" :key="image.id">
           <img :src='`http://localhost:3000/${image.options.mainPageSliderImage}`' class="carousel-img"/>
@@ -22,8 +22,10 @@
             <router-link
               tag="a"
               :to="`/product/${productMostWanted._id}`">
-              <img v-if="productMostWanted.image" :src='`http://localhost:3000/${productMostWanted.image}`' alt="" />
-              <img v-else :src='`http://localhost:3000/${productMostWanted.images[0]}`' alt="">
+              <div class="item-ly2-image-wrapper">
+                <img v-if="productMostWanted.image" :src='`http://localhost:3000/${productMostWanted.image}`' alt="" />
+                <img v-else :src='`http://localhost:3000/${productMostWanted.images[0]}`' alt="">
+              </div>
               <div class="item-ly2-product-name">{{ productMostWanted.title }}</div>
               <span class="item-ly2-product-price">{{ productMostWanted.price }} RSD</span>
             </router-link>
@@ -42,8 +44,10 @@
             <router-link
               tag="a"
               :to="`/product/${productRecommended._id}`">
-              <img v-if="productRecommended.image" :src='`http://localhost:3000/${productRecommended.image}`' alt="" />
-              <img v-else :src='`http://localhost:3000/${productRecommended.images[0]}`' alt="">
+              <div class="item-ly2-image-wrapper">
+                <img v-if="productRecommended.image" :src='`http://localhost:3000/${productRecommended.image}`' alt="" />
+                <img v-else :src='`http://localhost:3000/${productRecommended.images[0]}`' alt="">
+              </div>
               <div class="item-ly2-product-name">{{ productRecommended.title }}</div>
               <span class="item-ly2-product-price">{{ productRecommended.price }} RSD</span>
             </router-link>
@@ -96,56 +100,78 @@ export default {
 </script>
 
 <style lang="scss">
-.router-link-exact-active,
-.router-link-exact-active.submenu-item {
-  font-weight: 600;
-}
-.mobile-product-gallery {
-  text-align: center;
-
-  .carousel-img {
-    width: 80%;
+#home-page {
+  .router-link-exact-active,
+  .router-link-exact-active.submenu-item {
+    font-weight: 600;
   }
-}
-.company-description {
-  text-align: center;
-  margin: 80px auto 100px;
-  letter-spacing: .02em;
-  color: #111;
+  .product-gallery {
+    text-align: center;
 
-  h1 {
-    font-size: 27px;
-    font-weight: 700;
-    letter-spacing: .04em;
+    .carousel-img {
+      width: 80%;
+    }
   }
-  p {
-    margin: 10px auto 0;
-    letter-spacing: 0;
-  }
-}
-.item-title {
-  font-size: 20px;
-  font-weight: 600;
-  text-align: left;
-  margin: 0 0 30px 13px;
-}
-
-@media screen and (max-width: 499px) {
   .company-description {
-    width: 90%;
+    width: 75%;
+    text-align: center;
+    margin: 80px auto 80px;
+    letter-spacing: .02em;
+    color: #111;
 
+    h1 {
+      font-size: 40px;
+      font-weight: 700;
+      letter-spacing: .04em;
+    }
     p {
-      width: 100%;
-      max-width: 100%;
-      font-size: 15px;
-      line-height: 1.8;
+      margin: 10px auto 0;
+      letter-spacing: 0;
+      font-size: 14px;
+    }
+  }
+  .item-title {
+    font-size: 24px;
+    font-weight: 600;
+    margin: 0 0 60px 13px;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  #home-page {
+    .company-description {
+      font-size: 22px;
+      margin-top: 50px;
+    }
+    .product-gallery .carousel-img {
+      width: 60%;
     }
   }
 }
 
-@media screen and (max-width: 800px) {
-  .company-description {
-    font-size: 22px;
+@media screen and (max-width: 499px) {
+  #home-page {
+    .product-gallery .carousel-img {
+      width: 80%;
+    }
+    .company-description {
+      width: 90%;
+      margin-bottom: 50px;
+
+      h1 {
+        font-size: 27px;
+      }
+      p {
+        width: 100%;
+        max-width: 100%;
+        font-size: 15px;
+        line-height: 1.8;
+      }
+    }
+    .item-title {
+      font-size: 20px;
+      margin-bottom: 30px;
+    }
   }
 }
 </style>

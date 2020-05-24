@@ -2,8 +2,10 @@
   overflow-x: hidden;
 }
 .info-page-main-content {
+  width: 84%;
   margin: 0 auto;
   padding: 0 15px;
+  min-width: 690px;
   max-width: 1030px;
 
   a {
