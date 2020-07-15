@@ -1,6 +1,6 @@
 <template>
   <div class="header-wrapper nav-wrapper">
-    <nav id="header-nav" class="critical-hidden">
+    <nav id="mobile-header-nav" class="critical-hidden">
       <ul class="main-nav nav-left">
         <router-link
           tag="li"
@@ -181,23 +181,22 @@
 
 <script>
 import { mapGetters } from 'vuex'
-import routesApi from '../../api/navigation-routes'
 
 export default {
   name: 'HeaderNavigationMobile',
+  props: [
+    'brands',
+    'categories'
+  ],
   data() {
     return {
       helpMenuItemActive: false,
       contactMenuItemActive: false,
       productsMenuItemActive: false,
-      brandsMenuItemActive: false,
-      brands: [],
-      categories: []
+      brandsMenuItemActive: false
     }
   },
   created() {
-    this.gettingBrands()
-    this.gettingCategories()
     this.collapseMenuItems()
   },
   updated() {
@@ -206,18 +205,6 @@ export default {
     }
   },
   methods: {
-    gettingBrands() {
-      return routesApi.getBrands()
-        .then(brands => {
-          this.brands = brands.data.brands
-        })
-    },
-    gettingCategories() {
-      return routesApi.getCategories()
-        .then(categories => {
-          this.categories = categories.data.categories
-        })
-    },
     collapseMenuItems() {
       this.brandsMenuItemActive = false
       this.productsMenuItemActive = false

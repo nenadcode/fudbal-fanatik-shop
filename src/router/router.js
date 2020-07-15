@@ -14,6 +14,8 @@ import DeliveryAndReturn from '@/components/info/DeliveryAndReturn'
 import Contact from '@/components/info/Contact'
 import FAQ from '@/components/info/FAQ'
 
+import Cart from '@/components/cart/CartContainer'
+
 Vue.use(Router)
 
 export default new Router({
@@ -69,6 +71,11 @@ export default new Router({
       path: '/info/najcesca-pitanja',
       name: 'najcesca-pitanja',
       component: FAQ
+    },
+    {
+      path: '/cart',
+      name: 'Cart',
+      component: Cart
     }
   ],
   scrollBehavior (to, from, savedPosition) {

@@ -1,7 +1,12 @@
 <template>
   <div id="home-page">
     <div class="product-gallery">
-      <carousel :perPage="1" v-if="this.productsImageSlider.length">
+      <carousel
+        v-if="this.productsImageSlider.length"
+        :perPage="1"
+        :navigation-enabled="true"
+        :navigation-next-label="nextLabel"
+        :navigation-prev-label="prevLabel">
         <slide v-for="image in this.productsImageSlider" :key="image.id">
           <img :src='`http://localhost:3000/${image.options.mainPageSliderImage}`' class="carousel-img"/>
         </slide>
@@ -73,7 +78,9 @@ export default {
       products: [],
       productsImageSlider: [],
       productsMostWanted: [],
-      productsRecommended: []
+      productsRecommended: [],
+      nextLabel: "<img src='/../assets/right.png' />",
+      prevLabel: "<img src='../assets/right.png' />"
     }
   },
   created() {
@@ -134,6 +141,28 @@ export default {
     font-size: 24px;
     font-weight: 600;
     margin: 0 0 60px 13px;
+  }
+}
+
+@media screen and (min-width: 1025px) {
+  #home-page {
+    .product-gallery {
+      height: 700px;
+      padding-top: 90px;
+
+      .carousel-img {
+        width: 570px;
+      }
+    }
+    .item-title {
+      margin-top: 60px;
+    }
+    .VueCarousel-navigation-next {
+      background-image: 'data:image/png; base64'; // add your image as base64
+      font-size: 0; // to hide the unicode arrow provided by the library
+
+      // ... your custom styles (height, width...)
+    }
   }
 }
 

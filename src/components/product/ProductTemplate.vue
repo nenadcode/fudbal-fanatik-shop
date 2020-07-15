@@ -1,11 +1,21 @@
 <template>
   <div id="single-product-area">
     <div class="wrapper">
-      <div class="product-row">
+      <div class="mobile-product-row">
         <div class="product-hdr">
           <h3 class="product-category">{{ this.categoryName }}</h3>
           <h1 id="product-title">{{ this.product.title }}</h1>
           <p class="pricea">{{ this.product.price }} RSD</p>
+        </div>
+      </div>
+      <div id="mobile-product-gallery">
+        <carousel :perPage="1" v-if="this.product.images">
+          <slide v-for="image in this.product.images" :key="image.id">
+            <img :src='`http://localhost:3000/${image}`' class="carousel-img"/>
+          </slide>
+        </carousel>
+        <div v-else class="product-image-wrapper">
+          <img :src='`http://localhost:3000/${this.product.image}`' class="product-image" />
         </div>
       </div>
       <div id="product-gallery">
@@ -19,6 +29,11 @@
         </div>
       </div>
       <div class="product-details">
+        <div class="product-hdr">
+          <h3 class="product-category">{{ this.categoryName }}</h3>
+          <h1 id="product-title">{{ this.product.title }}</h1>
+          <p class="pricea">{{ this.product.price }} RSD</p>
+        </div>
         <p class="product-description" v-for="paragraph in this.product.description" :key="paragraph.id">{{ paragraph }}</p>
         <div class="submit-wrapper">
           <button class="button submit-button">Dodaj u korpu</button>
@@ -147,5 +162,12 @@ export default {
     font-weight: 600;
     margin: 0 0 30px 13px;
   }
+}
+@media screen and (min-width: 1025px) {
+  #single-product-area {
+  .item-title {
+    margin-top: 50px;
+  }
+}
 }
 </style>
