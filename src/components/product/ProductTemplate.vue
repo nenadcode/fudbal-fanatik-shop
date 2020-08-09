@@ -36,7 +36,7 @@
         </div>
         <p class="product-description" v-for="paragraph in this.product.description" :key="paragraph.id">{{ paragraph }}</p>
         <div class="submit-wrapper">
-          <button class="button submit-button">Dodaj u korpu</button>
+          <button class="button submit-button" @click="addProductToCart">Dodaj u korpu</button>
         </div>
         <div class="product-info-links">
           <router-link
@@ -101,7 +101,9 @@
 
 <script>
 import routesApi from '../../api/navigation-routes'
-import { Carousel, Slide } from 'vue-carousel';
+import EventBus from '../../services/event-bus'
+import { Carousel, Slide } from 'vue-carousel'
+import localStorageService from '../../services/localStorageService'
 
 export default {
   name: 'ProductTemplate',
@@ -118,11 +120,15 @@ export default {
       brandProducts: {},
       categoryName: '',
       categoryId: '',
-      categoryProducts: {}
+      categoryProducts: {},
+      cartLocalStorage: [],
+      productsCart: {},
+      selectedProduct: {}
     }
   },
   created() {
-    this.gettingProduct()
+    this.gettingProduct(),
+    this.setCartLocalStorage()
   },
   methods: {
     gettingProduct() {
@@ -138,7 +144,7 @@ export default {
           return routesApi.getBrand(this.brandId)
             .then(brand => {
               this.brandProducts = brand.data.resources.products.filter(productBrand => {
-                return productBrand._id != this.product._id;
+                return productBrand._id != this.product._id
               })
             })
         })
@@ -146,10 +152,68 @@ export default {
           return routesApi.getCategory(this.categoryId)
             .then(category => {
               this.categoryProducts = category.data.resources.products.filter(productCategory => {
-                return productCategory._id != this.product._id;
+                return productCategory._id != this.product._id
               })
             })
         })
+    },
+    addProductToCart() {
+      EventBus.$emit('CART_UPDATED', () => {
+        return true
+      })
+      this.productsCart = this.cartLocalStorage
+      this.selectedProduct = {
+        _id: this.product._id,
+        title: this.product.title,
+        image: this.product.image,
+        price: this.product.price,
+        qty: 1
+      }
+
+      if (!this.productsCart) {
+        this.productsCart = {
+          itemsQtyTotal: 0,
+          itemsPrice: 0,
+          products: []
+        }
+        this.productsCart.products.push(this.selectedProduct)
+        this.selectedProduct = {}
+        localStorageService.addToLocalStorage('cart', this.productsCart)
+      } else {
+        let sameProduct = this.productsCart.products.filter(matchedProduct => {
+          return matchedProduct._id == this.selectedProduct._id
+        })
+        if (sameProduct.length > 0) {
+          // debugger
+          sameProduct[0].qty = sameProduct[0].qty + this.selectedProduct.qty
+          sameProduct[0].price = sameProduct[0].price + this.selectedProduct.price
+
+          // this.productsCart.products.splice(this.selectedProduct, 1, sameProduct[0])
+          localStorageService.addToLocalStorage('cart', this.productsCart)
+          this.selectedProduct = {}
+        } else {
+          this.productsCart.products.push(this.selectedProduct)
+          localStorageService.addToLocalStorage('cart', this.productsCart)
+          this.selectedProduct = {}
+        }
+      }
+
+      this.productsCart.itemsQtyTotal = 0
+      this.productsCart.itemsPrice = 0
+
+      this.productsCart.products.map(item => {
+        this.productsCart.itemsQtyTotal += item.qty
+        this.productsCart.itemsPrice += item.price
+      })
+
+      localStorageService.addToLocalStorage('cart', this.productsCart)
+      this.$router.push({ name: 'cart' })
+    },
+    setCartLocalStorage() {
+      this.cartLocalStorage = localStorageService.parseFromLocalStorage('cart')
+      if (!this.cartLocalStorage) {
+        localStorageService.addToLocalStorage('cart', this.cartLocalStorage);
+      }
     }
   }
 }

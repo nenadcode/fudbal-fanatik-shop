@@ -73,8 +73,8 @@ export default new Router({
       component: FAQ
     },
     {
-      path: '/cart',
-      name: 'Cart',
+      path: '/add-to-cart',
+      name: 'cart',
       component: Cart
     }
   ],

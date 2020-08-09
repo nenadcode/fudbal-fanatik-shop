@@ -1,5 +1,5 @@
 <template>
-  <header id="main-header" :class="{ 'menu-open': menuActive }">
+  <header id="main-header" :class="{ 'menu-open': menuActive }" :key="componentKey">
     <div
       id="mobile-nav-button"
       v-if="isMobile()"
@@ -24,9 +24,9 @@
     />
     <div class="hdr-right">
       <div class="mobile-cart-wrapper">
-        <router-link to="/cart" id="cart-link">
+        <router-link to="/add-to-cart" id="cart-link">
           <font-awesome-icon class="shopping-cart" icon="shopping-cart" />
-          <span class="mobile-cart-counter">0</span>
+          <span class="mobile-cart-counter">{{ this.cartItemQty }}</span>
         </router-link>
       </div>
     </div>
@@ -35,21 +35,35 @@
 
 <script>
 import { mapGetters } from 'vuex'
+import EventBus from '../../services/event-bus'
 import routesApi from '../../api/navigation-routes'
 import HeaderNavigationMobile from './HeaderNavigationMobile.vue'
 import HeaderNavigation from './HeaderNavigation.vue'
+import localStorageService from '../../services/localStorageService'
 
 export default {
   name: 'HeaderContainer',
   data() {
     return {
       brands: [],
-      categories: []
+      categories: [],
+      cartLocalStorage: [],
+      cartItemQty: 0,
+      componentKey: 0
     }
   },
   created() {
     this.gettingBrands()
     this.gettingCategories()
+    this.getCartItemQty()
+  },
+  mounted() {
+    EventBus.$on('CART_UPDATED', () => {
+      this.componentKey += 1
+    })
+  },
+  updated() {
+    this.getCartItemQty()
   },
   computed: {
     ...mapGetters([
@@ -75,6 +89,12 @@ export default {
         .then(categories => {
           this.categories = categories.data.categories
         })
+    },
+    getCartItemQty() {
+      this.cartLocalStorage = localStorageService.parseFromLocalStorage('cart')
+      this.cartLocalStorage == null
+        ? this.cartItemQty = 0
+        : this.cartItemQty = this.cartLocalStorage.itemsQtyTotal
     }
   },
   components: {

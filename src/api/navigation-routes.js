@@ -24,11 +24,16 @@ function getHomePageProducts() {
   return http.get('/home-page-products')
 }
 
+function addToCart(id) {
+  return http.get(`/add-to-cart/${id}`)
+}
+
 export default {
   getBrands,
   getBrand,
   getCategories,
   getCategory,
   getProduct,
-  getHomePageProducts
+  getHomePageProducts,
+  addToCart
 }

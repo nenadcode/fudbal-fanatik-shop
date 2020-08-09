@@ -37,31 +37,6 @@
                 </router-link>
               </ul>
           </li>
-
-          <!-- <li class="menu-item-headline">
-            <a href="#" class="dropdown-link" @click="changeBrandsMenuItemActive">
-              klubovi
-              <span>
-                <img src="../../assets/down.png" alt="arrow down" class="menu-arrow" />
-              </span>
-            </a>
-              <ul :class="{ 'hovered': brandsMenuItemActive }">
-                <router-link
-                  v-for="brand in this.brands"
-                  :key="brand._id"
-                  tag="li"
-                  :to="`/klubovi/${brand._id}`"
-                  class="secondary-link">
-                  <div class="hovered-wrapper">
-                    <div class="icon-wrapper">
-                      <img :src="getBrandImgUrl(brand.shortName)" alt="brand.name">
-                    </div>
-                  </div>
-                  {{ brand.name }}
-                </router-link>
-              </ul>
-          </li> -->
-
           <li
             class="menu-item-headline"
             :class="{
